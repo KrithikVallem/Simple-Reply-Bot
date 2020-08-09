@@ -1,6 +1,6 @@
-import { launch } from './simpleReplyBot.js';
+import { launch, simpleReplyBot } from './simpleReplyBot.js';
 
-const bot = {token: '...'}
+const bot = new simpleReplyBot("token");
 
 bot.commands = {
     ping: 'pong',
