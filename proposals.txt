@@ -1,0 +1,35 @@
+const easyDiscordBot = require(`easyDiscordBot.js`)
+
+const bot = new easyDiscordBot(<token>)
+
+bot.prefix = `%`
+bot.argSeparatorRegex = " +"
+
+bot.replies = {
+  ping: `pong`,
+  members: [`e`, "`There are ${Guild.members.length} members in this server!`"],
+  sum: [`f`, getSum],
+  echo: [`f`, args => args.join(` `)],
+  `who sent me?`: [`fe`, () => "`I was sent by ${message.author.username}`"],
+  speak: [`o`, 'hello', {tts: true}],
+  embed: [`o`, ``, {embed: {description: "A very simple Embed!"}}],
+}
+// flags: e -> eval, f -> function, r -> @reply, o -> messageOptions,
+
+// https://www.reddit.com/r/discordapp/comments/6kit5r/have_discordjs_bot_send_tts_message/djmhasi?utm_source=share&utm_medium=web2x&context=3
+// https://discord.js.org/#/docs/main/stable/typedef/MessageOptions
+
+bot.launch()
+==================
+
+const { bot } = require("easyDiscordBot.js")
+bot.replies = {ping: "pong"}
+bot.launch(<token>)
+
+=============
+
+const { bot } = require("easyDiscordBot.js")
+const myBot = new bot(<token>)
+myBot.run({
+  ping: "pong"
+})
