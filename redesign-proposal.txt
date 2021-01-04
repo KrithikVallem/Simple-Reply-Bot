@@ -1,0 +1,24 @@
+// basic ping pong bot
+require("simpleReplyBot.js")({
+  token: "TOKEN",
+  commands: {
+    ping: "pong"
+  }
+})
+
+// more features shown:
+require("simpleReplyBot.js")({
+  token: "TOKEN",
+  prefix: "!",
+  mentionAuthor: false, //defaults to false
+  argSeparator: " +", // regex is " +" by default which splits by any # of whitespaces
+  commands: {
+    ping: "pong",
+    "mentionMe": (msg) => eval(`@${msg.author.username}`),
+    "sum": (_, args) => addUp(args),
+    "speak", ["I am talking", {tts: true}]
+  },
+});
+
+for func/eval, pass in a actual function -- 1st arg is msg itself, 2nd is args array
+for msgOpts object, use array with 1st arg str/func, and 2nd arg the msgOpts object
